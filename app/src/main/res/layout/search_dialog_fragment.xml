@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_sheet_dialog_layout"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_marginBottom="@dimen/margin_medium">
+
+    <TextView
+        android:id="@+id/search_button_textview"
+        style="@style/TextViewButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_search"
+        app:layout_constraintBottom_toTopOf="@id/search_input_layout"
+        app:layout_constraintEnd_toEndOf="@id/clear_text_imageview"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/search_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:hint="@string/search_hint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/search_edit_text"
+            style="@style/BaseEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/clear_text_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:contentDescription="@string/delete_description"
+        android:src="@drawable/ic_delete_text"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/search_input_layout"
+        app:layout_constraintEnd_toEndOf="@id/search_input_layout"
+        app:layout_constraintTop_toTopOf="@id/search_input_layout"
+        tools:visibility="visible" />
+
+    <CheckBox
+        android:id="@+id/search_in_history_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search_in_history"
+        android:checked="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/search_input_layout"
+        app:layout_constraintTop_toBottomOf="@+id/search_input_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

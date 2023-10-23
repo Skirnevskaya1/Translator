@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -36,11 +37,36 @@ android {
 }
 
 dependencies {
+    implementation(project(Modules.utils))
+    implementation(project(Modules.domain))
+    implementation(project(Modules.core))
+    implementation(project(Modules.data))
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(Design.appcompat)
+    implementation(Design.material)
+    implementation(Design.swiperefreshlayout)
+    implementation(Design.constraintlayout)
+
+
+    implementation(Koin.koin_android)
+    implementation(Koin.koin_java_compat)
+
+    //Kotlin
+    implementation(Kotlin.core)
+    implementation(Kotlin.stdlib)
+
+    //Room
+    implementation(Room.runtime)
+    kapt(Room.compiler)
+    implementation(Room.room_ktx)
+
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.11.0")
+    kapt ("com.github.bumptech.glide:compiler:4.11.0")
+
+    //Picasso
+    implementation ("com.squareup.picasso:picasso:2.71828")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
