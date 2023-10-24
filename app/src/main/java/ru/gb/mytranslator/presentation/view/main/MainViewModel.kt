@@ -5,10 +5,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.gb.core.viewModel.BaseViewModel
-import ru.gb.data.parseOnlineSearchResults
 import ru.gb.domain.AppState
+import ru.gb.domain.usecase.HistoryUseCase
+import ru.gb.domain.usecase.SearchOnlineUseCase
 
-class MainViewModel(private val interactor: MainInteractor) :
+class MainViewModel(
+    private val interactor: MainInteractor,
+    private val searchOnlineUseCase: SearchOnlineUseCase,
+    private val historyUseCase: HistoryUseCase
+) :
     BaseViewModel<AppState>() {
 
     private val liveDataForViewToObserve: LiveData<AppState> = _mutableLiveData
@@ -28,13 +33,24 @@ class MainViewModel(private val interactor: MainInteractor) :
     // То же самое применимо для Room
     private suspend fun startInteractor(word: String, fromLocalSource: Boolean) =
         withContext(Dispatchers.IO) {
+//            _mutableLiveData.postValue(
+//                parseOnlineSearchResults(
+//                    interactor.getData(
+//                        word,
+//                        fromLocalSource
+//                    )
+//                )
+//            )
+
+            val appState = if (fromLocalSource) {
+                AppState.Success(listOf(historyUseCase.getByWord(word)))
+            } else {
+                AppState.Success(searchOnlineUseCase.search(word))
+            }
+
             _mutableLiveData.postValue(
-                parseOnlineSearchResults(
-                    interactor.getData(
-                        word,
-                        fromLocalSource
-                    )
-                )
+//                parseOnlineSearchResults(appState)
+                appState
             )
         }
 

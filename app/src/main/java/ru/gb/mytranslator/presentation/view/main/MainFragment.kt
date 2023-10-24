@@ -49,10 +49,9 @@ class MainFragment : BaseFragment<AppState>() {
     private val onSearchClickListener: SearchDialogFragment.OnSearchClickListener =
         object : SearchDialogFragment.OnSearchClickListener {
             override fun onClick(searchWord: String, fromLocalSource: Boolean) {
-                if (!isNetworkAvailable && !fromLocalSource){
+                if (!isNetworkAvailable && !fromLocalSource) {
                     showNoInternetConnectionDialog()
-                }
-                else {
+                } else {
                     model.getData(searchWord, fromLocalSource)
                 }
 //                if (isNetworkAvailable) {

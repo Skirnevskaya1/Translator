@@ -22,11 +22,11 @@ fun mapHistoryEntityToSearchResult(list: List<HistoryEntity>): List<SearchResult
     return searchResult
 }
 
-fun convertDataModelSuccessToEntity(dataModel: DataModel): HistoryEntity {
-    return HistoryEntity(dataModel.text, dataModel.meanings[0].translatedMeaning.translatedMeaning)
+fun convertDataModelSuccessToEntity(dataModel: DataModel): HistoryEntity {///////////
+    return HistoryEntity(dataModel.text, dataModel.meanings[0].translatedMeaning.translatedMeaning,dataModel.meanings[0].imageUrl)
 }
 
-fun mapSearchResultToResult(searchResults: List<SearchResultDto>): List<DataModel> {
+fun mapSearchResultToResult(searchResults: List<SearchResultDto>): List<DataModel> {////////
     return searchResults.map { searchResult ->
         var meanings: List<Meaning> = listOf()
         searchResult.meanings?.let {

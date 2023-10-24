@@ -1,12 +1,12 @@
 package ru.gb.mytranslator.presentation.view.history
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.gb.domain.model.DataModel
 import ru.gb.mytranslator.R
+import ru.gb.mytranslator.databinding.ActivityHistoryRecyclerviewItemBinding
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolder>() {
 
@@ -17,9 +17,13 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolde
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerItemViewHolder {
+        val binding = ActivityHistoryRecyclerviewItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return RecyclerItemViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.activity_history_recyclerview_item, parent, false) as View
+            binding
         )
     }
 
@@ -31,7 +35,8 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolde
         return data.size
     }
 
-    inner class RecyclerItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class RecyclerItemViewHolder(binding: ActivityHistoryRecyclerviewItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: DataModel) {
             if (layoutPosition != RecyclerView.NO_POSITION) {
