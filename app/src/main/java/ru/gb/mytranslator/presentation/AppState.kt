@@ -1,4 +1,4 @@
-package ru.gb.domain
+package ru.gb.mytranslator.presentation
 
 import ru.gb.domain.models.DataModel
 

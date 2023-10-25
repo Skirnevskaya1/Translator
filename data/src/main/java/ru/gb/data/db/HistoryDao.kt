@@ -1,4 +1,4 @@
-package ru.gb.data.room
+package ru.gb.data.db
 
 import androidx.room.Dao
 import androidx.room.Delete

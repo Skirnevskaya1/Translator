@@ -1,4 +1,4 @@
-package ru.gb.core.viewModel
+package ru.gb.mytranslator.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

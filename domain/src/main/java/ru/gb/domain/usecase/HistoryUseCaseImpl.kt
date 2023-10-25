@@ -1,7 +1,7 @@
 package ru.gb.domain.usecase
 
-import ru.gb.domain.LocalRepository
 import ru.gb.domain.models.DataModel
+import ru.gb.domain.repository.LocalRepository
 
 class HistoryUseCaseImpl(private val localRepository: LocalRepository) : HistoryUseCase {
     override suspend fun getAll(): List<DataModel> {

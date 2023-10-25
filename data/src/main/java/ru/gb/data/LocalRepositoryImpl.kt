@@ -1,8 +1,8 @@
 package ru.gb.data
 
-import ru.gb.data.room.HistoryDao
-import ru.gb.domain.LocalRepository
+import ru.gb.data.db.HistoryDao
 import ru.gb.domain.models.DataModel
+import ru.gb.domain.repository.LocalRepository
 
 class LocalRepositoryImpl(private val historyDao: HistoryDao) : LocalRepository {
     override suspend fun saveToDB(dataModel: DataModel) {

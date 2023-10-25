@@ -4,13 +4,12 @@ import androidx.lifecycle.LiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.gb.core.viewModel.BaseViewModel
-import ru.gb.domain.AppState
 import ru.gb.domain.usecase.HistoryUseCase
 import ru.gb.domain.usecase.SearchOnlineUseCase
+import ru.gb.mytranslator.presentation.AppState
+import ru.gb.mytranslator.presentation.BaseViewModel
 
 class MainViewModel(
-    private val interactor: MainInteractor,
     private val searchOnlineUseCase: SearchOnlineUseCase,
     private val historyUseCase: HistoryUseCase
 ) :

@@ -16,34 +16,26 @@ class ViewByIdDelegate<out T : View>(private val rootGetter: () -> View?, privat
     operator fun getValue(thisRef: Any?, property: KProperty<*>): T {
         var view = viewRef
         val cachedRoot = rootRef?.get()
-        // Получаем root
         val currentRoot = rootGetter()
 
         if (currentRoot != cachedRoot || view == null) {
             if (currentRoot == null) {
                 if (view != null) {
-                    // Failsafe, возвращать хотя бы последнюю View
                     return view
                 }
                 throw IllegalStateException("Cannot get View, there is no root yet")
             }
-            // Создаём View
             view = currentRoot.findViewById(viewId)
-            // Сохраняем ссылку на View, чтобы не создавать её каждый раз
-            // заново
             viewRef = view
-            // Сохраняем ссылку на root, чтобы не искать его каждый раз заново
             rootRef = WeakReference(currentRoot)
         }
 
         checkNotNull(view) { "View with id \"$viewId\" not found in root" }
-        // Возвращаем View в момент обращения к ней
         return view
     }
 }
 
 fun <T : View> Activity.viewById(@IdRes viewId: Int): ViewByIdDelegate<T> {
-    // Возвращаем корневую View
     return ViewByIdDelegate({window.decorView.findViewById(android.R.id.content)}, viewId)
 }
 
