@@ -17,8 +17,4 @@ dependencies {
 
     implementation(Koin.koin_android)
     implementation(Koin.koin_java_compat)
-
-//    //Kotlin
-//    implementation(Kotlin.core)
-//    implementation(Kotlin.stdlib)
 }

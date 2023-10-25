@@ -3,7 +3,7 @@ package ru.gb.mytranslator.presentation.view.main.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import ru.gb.domain.model.DataModel
+import ru.gb.domain.models.DataModel
 import ru.gb.mytranslator.databinding.FragmentMainRecyclerviewItemBinding
 
 class MainAdapter(private val listener: (item: DataModel) -> Unit) :

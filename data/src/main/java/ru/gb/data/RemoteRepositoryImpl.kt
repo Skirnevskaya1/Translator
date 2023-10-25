@@ -3,7 +3,7 @@ package ru.gb.data
 import ru.gb.data.dto.SearchResultDto
 import ru.gb.domain.RemoteRepository
 import ru.gb.domain.datasource.DataSource
-import ru.gb.domain.model.DataModel
+import ru.gb.domain.models.DataModel
 
 class RemoteRepositoryImpl(private val dataSource: DataSource<List<SearchResultDto>>) :
     RemoteRepository {

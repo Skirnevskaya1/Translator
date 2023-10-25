@@ -10,11 +10,9 @@ android {
 
 dependencies {
     implementation (project(Modules.domain))
-    implementation(Design.appcompat)
 
     //Kotlin
     implementation(Kotlin.core)
-//    implementation(Kotlin.stdlib)
 
     //Retrofit 2
     implementation(Retrofit.retrofit)

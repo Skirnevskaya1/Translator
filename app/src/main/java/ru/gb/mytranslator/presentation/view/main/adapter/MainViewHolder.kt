@@ -2,7 +2,7 @@ package ru.gb.mytranslator.presentation.view.main.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import ru.gb.data.convertMeaningsToSingleString
-import ru.gb.domain.model.DataModel
+import ru.gb.domain.models.DataModel
 import ru.gb.mytranslator.databinding.FragmentMainRecyclerviewItemBinding
 
 class MainViewHolder(

@@ -1,6 +1,6 @@
 package ru.gb.domain
 
-import ru.gb.domain.model.DataModel
+import ru.gb.domain.models.DataModel
 
 sealed class AppState {
     data class Success(val data: List<DataModel>?) : AppState()

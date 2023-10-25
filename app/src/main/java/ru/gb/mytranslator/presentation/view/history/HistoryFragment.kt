@@ -8,7 +8,7 @@ import org.koin.android.ext.android.inject
 import ru.gb.core.BaseFragment
 import ru.gb.core.databinding.LoadingLayoutBinding
 import ru.gb.domain.AppState
-import ru.gb.domain.model.DataModel
+import ru.gb.domain.models.DataModel
 import ru.gb.mytranslator.databinding.FragmentHistoryBinding
 
 class HistoryFragment : BaseFragment<AppState>() {

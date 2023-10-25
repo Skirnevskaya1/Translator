@@ -2,9 +2,9 @@ package ru.gb.data
 
 import ru.gb.data.dto.SearchResultDto
 import ru.gb.data.room.HistoryEntity
-import ru.gb.domain.model.DataModel
-import ru.gb.domain.model.Meaning
-import ru.gb.domain.model.TranslatedMeaning
+import ru.gb.domain.models.DataModel
+import ru.gb.domain.models.Meaning
+import ru.gb.domain.models.TranslatedMeaning
 
 fun DataModel.toHistoryEntity(): HistoryEntity =
     HistoryEntity(

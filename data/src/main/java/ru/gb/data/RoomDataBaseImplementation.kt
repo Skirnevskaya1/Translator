@@ -3,7 +3,7 @@ package ru.gb.data
 import ru.gb.data.dto.SearchResultDto
 import ru.gb.data.room.HistoryDao
 import ru.gb.domain.datasource.DataSourceLocal
-import ru.gb.domain.model.DataModel
+import ru.gb.domain.models.DataModel
 
 class RoomDataBaseImplementation(private val historyDao: HistoryDao) :
     DataSourceLocal<List<SearchResultDto>> {

@@ -2,7 +2,7 @@ package ru.gb.data
 
 import ru.gb.data.dto.SearchResultDto
 import ru.gb.domain.datasource.DataSourceLocal
-import ru.gb.domain.model.DataModel
+import ru.gb.domain.models.DataModel
 import ru.gb.domain.repository.RepositoryLocal
 
 class RepositoryImplementationLocal(private val dataSource: DataSourceLocal<List<SearchResultDto>>) :

@@ -1,4 +1,4 @@
-package ru.gb.domain.model
+package ru.gb.domain.models
 
 data class TranslatedMeaning(
     val translatedMeaning: String = ""

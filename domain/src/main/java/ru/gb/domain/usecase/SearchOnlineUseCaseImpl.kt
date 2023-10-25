@@ -2,7 +2,7 @@ package ru.gb.domain.usecase
 
 import ru.gb.domain.LocalRepository
 import ru.gb.domain.RemoteRepository
-import ru.gb.domain.model.DataModel
+import ru.gb.domain.models.DataModel
 
 class SearchOnlineUseCaseImpl(
     private val localRepository: LocalRepository,

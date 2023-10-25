@@ -9,7 +9,7 @@ import gb.ru.utils.ui.AlertDialogFragment
 import org.koin.androidx.scope.ScopeFragment
 import ru.gb.core.viewModel.BaseViewModel
 import ru.gb.domain.AppState
-import ru.gb.domain.model.DataModel
+import ru.gb.domain.models.DataModel
 
 private const val DIALOG_FRAGMENT_TAG = "DIALOG_FRAGMENT_TAG"
 

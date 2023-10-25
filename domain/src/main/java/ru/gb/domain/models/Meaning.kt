@@ -1,4 +1,4 @@
-package ru.gb.domain.model
+package ru.gb.domain.models
 
 data class Meaning(
     val translatedMeaning: TranslatedMeaning = TranslatedMeaning(),

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import ru.gb.domain.model.DataModel
+import ru.gb.domain.models.DataModel
 import ru.gb.mytranslator.R
 import ru.gb.mytranslator.databinding.ActivityHistoryRecyclerviewItemBinding
 

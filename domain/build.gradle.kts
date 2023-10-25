@@ -8,8 +8,6 @@ android {
 }
 
 dependencies {
-
     //Kotlin
     implementation(Kotlin.core)
-//    implementation(Kotlin.stdlib)
 }
