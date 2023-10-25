@@ -7,8 +7,8 @@ import android.widget.Toast
 import gb.ru.utils.network.OnlineLiveData
 import gb.ru.utils.ui.AlertDialogFragment
 import org.koin.androidx.scope.ScopeFragment
-import ru.gb.core.R
 import ru.gb.domain.models.DataModel
+import ru.gb.mytranslator.R
 
 private const val DIALOG_FRAGMENT_TAG = "DIALOG_FRAGMENT_TAG"
 

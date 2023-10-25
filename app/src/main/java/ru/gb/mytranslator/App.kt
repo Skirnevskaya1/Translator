@@ -13,7 +13,6 @@ class App : Application() {
 
         startKoin {
             androidContext(applicationContext)
-//            modules(listOf(application, mainScreen, historyScreen))
             modules(listOf(application, mainScreen, historyScreen))
 
         }

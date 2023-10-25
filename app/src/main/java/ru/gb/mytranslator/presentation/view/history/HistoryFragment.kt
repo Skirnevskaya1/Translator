@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.koin.android.ext.android.inject
-import ru.gb.core.databinding.LoadingLayoutBinding
 import ru.gb.domain.models.DataModel
 import ru.gb.mytranslator.databinding.FragmentHistoryBinding
+import ru.gb.mytranslator.databinding.LoadingLayoutBinding
 import ru.gb.mytranslator.presentation.AppState
 import ru.gb.mytranslator.presentation.BaseFragment
 
@@ -26,9 +26,6 @@ class HistoryFragment : BaseFragment<AppState>() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentHistoryBinding.inflate(layoutInflater)
         return binding.root
-//        return FragmentHistoryBinding.inflate(layoutInflater).also {
-//            binding = it
-//        }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

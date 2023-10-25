@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showScreenMain(){
+    private fun showScreenMain() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, MainFragment())
             .commit()
@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null)
             .commit()
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.history_menu, menu)
         return super.onCreateOptionsMenu(menu)
@@ -52,9 +53,11 @@ class MainActivity : AppCompatActivity() {
                 showScreenHistory()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
+
     private fun setDefaultSplashScreen() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             setSplashScreenHideAnimation()
@@ -84,9 +87,7 @@ class MainActivity : AppCompatActivity() {
         var isHideSplashScreen = false
 
         object : CountDownTimer(COUNTDOWN_DURATION, COUNTDOWN_INTERVAL) {
-            override fun onTick(p0: Long) {
-                // Nothing to do
-            }
+            override fun onTick(p0: Long) {}
 
             override fun onFinish() {
                 isHideSplashScreen = true

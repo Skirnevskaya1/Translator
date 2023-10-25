@@ -15,7 +15,6 @@ object Releases {
 object Modules {
     const val app = ":app"
     const val utils = ":utils"
-    const val core = ":core"
     const val domain = ":domain"
     const val data = ":data"
 
@@ -82,7 +81,6 @@ object Retrofit {
 
 object Koin {
     const val koin_android = "io.insert-koin:koin-core:${Versions.koinAndroid}"
-    const val koin_view_model = "io.insert-koin:koin-android:${Versions.koinViewModel}"
     const val koin_java_compat = "io.insert-koin:koin-android-compat:${Versions.koinViewModel}"
 }
 
@@ -94,10 +92,4 @@ object Room {
     const val runtime = "androidx.room:room-runtime:${Versions.runtime}"
     const val compiler = "androidx.room:room-compiler:${Versions.roomCompiler}"
     const val room_ktx = "androidx.room:room-ktx:${Versions.roomKtx}"
-}
-
-object TestImpl {
-    const val junit = "junit:junit:${Versions.jUnit}"
-    const val runner = "androidx.test:runner:${Versions.runner}"
-    const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
 }
