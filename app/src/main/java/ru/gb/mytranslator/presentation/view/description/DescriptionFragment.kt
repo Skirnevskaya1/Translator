@@ -19,13 +19,14 @@ import ru.gb.mytranslator.R
 import ru.gb.mytranslator.databinding.FragmentDescriptionBinding
 
 class DescriptionFragment : Fragment() {
-    private lateinit var binding: FragmentDescriptionBinding
+    private var _binding: FragmentDescriptionBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = FragmentDescriptionBinding.inflate(layoutInflater)
+        _binding = FragmentDescriptionBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -75,6 +76,7 @@ class DescriptionFragment : Fragment() {
             RenderEffect.createBlurEffect(15f, 0f, Shader.TileMode.MIRROR)
         binding.descriptionImageview.setRenderEffect(blurEffect)
     }
+
     private fun stopRefreshAnimationIfNeeded() {
         if (binding.descriptionScreenSwipeRefreshLayout.isRefreshing) {
             binding.descriptionScreenSwipeRefreshLayout.isRefreshing = false
@@ -104,6 +106,11 @@ class DescriptionFragment : Fragment() {
             .build()
 
         ImageLoader(requireContext()).execute(request)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     companion object {

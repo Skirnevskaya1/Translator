@@ -1,4 +1,4 @@
-package gb.ru.translator.view.main
+package ru.gb.mytranslator.presentation.view.main
 
 import android.os.Bundle
 import android.text.Editable
@@ -13,6 +13,7 @@ class SearchDialogFragment : BottomSheetDialogFragment() {
 
     private var _binding: SearchDialogFragmentBinding? = null
     private val binding get() = _binding!!
+
     private var onSearchClickListener: OnSearchClickListener? = null
 
     private val textWatcher = object : TextWatcher {
@@ -23,7 +24,7 @@ class SearchDialogFragment : BottomSheetDialogFragment() {
 
                 searchButtonTextview.isEnabled = !searchEditTextIsEmpty
                 if (searchEditTextIsEmpty) {
-                    clearTextImageview.visibility = View.VISIBLE
+                    clearTextImageview.visibility = View.INVISIBLE
                 } else {
                     clearTextImageview.visibility = View.VISIBLE
                 }

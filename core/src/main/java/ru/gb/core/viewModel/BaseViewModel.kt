@@ -1,4 +1,4 @@
-package ru.gb.mytranslator.presentation
+package ru.gb.core.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,7 +28,7 @@ abstract class BaseViewModel<T>(
         viewModelCoroutineScope.coroutineContext.cancelChildren()
     }
 
-//    abstract fun getData(word: String, fromLocalSource: Boolean = false)
+    abstract fun getData(word: String, fromLocalSource: Boolean)
 
     abstract fun handleError(error: Throwable)
 }

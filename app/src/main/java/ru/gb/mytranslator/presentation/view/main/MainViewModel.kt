@@ -19,12 +19,17 @@ class MainViewModel(
         return liveDataForViewToObserve
     }
 
-    override fun getData(word: String, fromLocalSource: Boolean) {
+    fun getData(word: String, fromLocalSource: Boolean) {
         _mutableLiveData.value = AppState.Loading
         cancelJob()
         viewModelCoroutineScope.launch {
             val appState = if (fromLocalSource) {
-                AppState.Success(listOf(historyUseCase.getByWord(word)))
+                val list = historyUseCase.getByWord(word)
+                if (list == null) {
+                    AppState.Success(emptyList())
+                } else {
+                    AppState.Success(listOf(list))
+                }
             } else {
                 AppState.Success(searchOnlineUseCase.search(word))
             }

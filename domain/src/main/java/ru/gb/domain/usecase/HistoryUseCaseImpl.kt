@@ -8,7 +8,7 @@ class HistoryUseCaseImpl(private val localRepository: LocalRepository) : History
         return localRepository.getAll()
     }
 
-    override suspend fun getByWord(word: String): DataModel {
+    override suspend fun getByWord(word: String): DataModel? {
         return localRepository.getDataByWord(word)
     }
 }

@@ -2,9 +2,11 @@ package ru.gb.mytranslator.presentation.view.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import gb.ru.translator.view.main.SearchDialogFragment
 import org.koin.android.ext.android.inject
 import ru.gb.data.convertMeaningsToSingleString
 import ru.gb.domain.models.DataModel
@@ -13,13 +15,16 @@ import ru.gb.mytranslator.databinding.FragmentMainBinding
 import ru.gb.mytranslator.presentation.AppState
 import ru.gb.mytranslator.presentation.BaseFragment
 import ru.gb.mytranslator.presentation.view.description.DescriptionFragment
+import ru.gb.mytranslator.presentation.view.history.HistoryFragment
 import ru.gb.mytranslator.presentation.view.main.adapter.MainAdapter
+
 
 private const val BOTTOM_SHEET_FRAGMENT_DIALOG_TAG = "74a54328-5d62-46bf-ab6b-cbf5fgt0-092395"
 
 class MainFragment : BaseFragment<AppState>() {
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var binding: FragmentMainBinding
     override lateinit var model: MainViewModel
     private val adapter: MainAdapter by lazy { MainAdapter { onListItemClickListener.invoke(it) } }
 
@@ -54,13 +59,24 @@ class MainFragment : BaseFragment<AppState>() {
                 } else {
                     model.getData(searchWord, fromLocalSource)
                 }
-//                if (isNetworkAvailable) {
-//                    model.getData(searchWord, isNetworkAvailable)
-//                } else {
-//                    showNoInternetConnectionDialog()
-//                }
             }
         }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.history_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_history -> {
+                showScreenHistory()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,7 +84,8 @@ class MainFragment : BaseFragment<AppState>() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = FragmentMainBinding.inflate(layoutInflater)
+        setHasOptionsMenu(true)
+        _binding = FragmentMainBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -81,7 +98,6 @@ class MainFragment : BaseFragment<AppState>() {
     override fun setDataToAdapter(data: List<DataModel>) {
         adapter.submitList(data)
     }
-
 
     private fun iniViewModel() {
         if (binding.mainActivityRecyclerview.adapter != null) {
@@ -96,5 +112,17 @@ class MainFragment : BaseFragment<AppState>() {
     private fun initViews() {
         binding.searchFab.setOnClickListener(fabClickListener)
         binding.mainActivityRecyclerview.adapter = adapter
+    }
+
+    private fun showScreenHistory() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, HistoryFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

@@ -12,9 +12,12 @@ import ru.gb.mytranslator.presentation.AppState
 import ru.gb.mytranslator.presentation.BaseFragment
 
 class HistoryFragment : BaseFragment<AppState>() {
+    private var _binding: FragmentHistoryBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var binding: FragmentHistoryBinding
-    private lateinit var bindingLoading : LoadingLayoutBinding
+    private var _bindingLoading: LoadingLayoutBinding? = null
+    private val bindingLoading get() = _bindingLoading!!
+
     override lateinit var model: HistoryViewModel
     private val adapter: HistoryAdapter by lazy { HistoryAdapter() }
 
@@ -24,7 +27,7 @@ class HistoryFragment : BaseFragment<AppState>() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = FragmentHistoryBinding.inflate(layoutInflater)
+        _binding = FragmentHistoryBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -32,12 +35,13 @@ class HistoryFragment : BaseFragment<AppState>() {
         super.onViewCreated(view, savedInstanceState)
         iniViewModel()
         initViews()
-        bindingLoading = LoadingLayoutBinding.inflate(layoutInflater)
+        _bindingLoading = LoadingLayoutBinding.inflate(layoutInflater)
         bindingLoading.loadingFrameLayout.visibility = View.VISIBLE
     }
+
     override fun onResume() {
         super.onResume()
-        model.getData("", false)
+        model.getData()
     }
 
     override fun setDataToAdapter(data: List<DataModel>) {
@@ -51,10 +55,16 @@ class HistoryFragment : BaseFragment<AppState>() {
 
         val viewModel: HistoryViewModel by inject()
         model = viewModel
-        model.subscribe().observe(viewLifecycleOwner, { renderData(it) })
+        model.subscribe().observe(viewLifecycleOwner) { renderData(it) }
     }
 
     private fun initViews() {
         binding.historyActivityRecyclerview.adapter = adapter
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+        _bindingLoading = null
     }
 }

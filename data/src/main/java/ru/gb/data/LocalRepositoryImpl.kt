@@ -13,7 +13,7 @@ class LocalRepositoryImpl(private val historyDao: HistoryDao) : LocalRepository 
         return historyDao.all().toListDataModelConvert()
     }
 
-    override suspend fun getDataByWord(word: String): DataModel {
-        return historyDao.getDataByWord(word).toDataModel()
+    override suspend fun getDataByWord(word: String): DataModel? {
+        return historyDao.getDataByWord(word)?.toDataModel()
     }
 }

@@ -4,15 +4,12 @@ import android.animation.ObjectAnimator
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.AnticipateInterpolator
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
-import ru.gb.mytranslator.presentation.view.history.HistoryFragment
 import ru.gb.mytranslator.presentation.view.main.MainFragment
 
 private const val SLIDE_LEFT_DURATION = 1000L
@@ -23,38 +20,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setDefaultSplashScreen()
+
         if (savedInstanceState == null) {
-            showScreenMain()
-        }
-    }
+            setDefaultSplashScreen()
 
-    private fun showScreenMain() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, MainFragment())
-            .commit()
-    }
-
-    private fun showScreenHistory() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, HistoryFragment())
-            .addToBackStack(null)
-            .commit()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.history_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menu_history -> {
-                showScreenHistory()
-                true
-            }
-
-            else -> super.onOptionsItemSelected(item)
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, MainFragment())
+                .commit()
         }
     }
 

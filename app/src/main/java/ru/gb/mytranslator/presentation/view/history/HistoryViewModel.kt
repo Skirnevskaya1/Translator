@@ -22,7 +22,7 @@ class HistoryViewModel(
         return liveDataForViewToObserve
     }
 
-    override fun getData(word: String, fromLocalSource: Boolean) {
+    fun getData() {
         _mutableLiveData.postValue(AppState.Loading)
         cancelJob()
         viewModelCoroutineScope.launch {
@@ -30,7 +30,6 @@ class HistoryViewModel(
                 AppState.Success(historyUseCase.getAll())
             )
         }
-
     }
 
     override fun handleError(error: Throwable) {
